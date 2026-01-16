@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+const isBrowser = typeof window !== "undefined";
 
 type Theme = "dark" | "light" | "system";
 
@@ -26,9 +27,13 @@ export function ThemeProvider({
   storageKey = "vite-ui-theme",
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(() => (localStorage.getItem(storageKey) as Theme) || defaultTheme);
+  const [theme, setTheme] = useState<Theme>(() =>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    isBrowser ? ((localStorage.getItem(storageKey) as any) ?? defaultTheme) : defaultTheme,
+  );
 
   useEffect(() => {
+    if (!isBrowser) return;
     const root = window.document.documentElement;
 
     root.classList.remove("light", "dark");

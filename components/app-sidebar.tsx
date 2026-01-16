@@ -121,7 +121,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <span className="truncate font-semibold">{data.app.name}</span>
             <span className="truncate text-xs">{data.app.plan}</span>
           </div>
-          <ChevronsUpDown className="ml-auto" />
         </SidebarMenuButton>
       </SidebarHeader>
       <SidebarContent>

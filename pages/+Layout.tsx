@@ -1,14 +1,8 @@
 import "../css/Layout.css";
 import "../tailwind.css";
 
-import { AppSidebar } from "@/components/app-sidebar";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import PageLayout from "./layouts/PageLayout";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <SidebarProvider>
-      <AppSidebar />
-      {children}
-    </SidebarProvider>
-  );
+  return <PageLayout>{children}</PageLayout>;
 }

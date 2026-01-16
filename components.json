@@ -12,6 +12,10 @@
   "aliases": {
     "utils": "@/lib/utils",
     "components": "@/components",
-    "hooks": "@/components/hooks"
-  }
+    "hooks": "@/components/hooks",
+    "ui": "@/components/ui"
+  },
+  "menuColor": "default",
+  "menuAccent": "bold",
+  "registries": {}
 }
