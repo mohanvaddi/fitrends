@@ -1,5 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartContainer } from "@/components/ui/chart";
+import { Heatmap, type HeatmapData } from "@/components/ui/heatmap";
+import { useMemo } from "react";
 import {
   Area,
   AreaChart,
@@ -61,11 +63,54 @@ export default function Page() {
     { exercise: "OHP", current: 145, previous: 135 },
   ];
 
+  function generateRandomHeatmapData(
+    startDate: Date,
+    endDate: Date,
+    minValue: number = 0,
+    maxValue: number = 30,
+  ): HeatmapData {
+    const data: HeatmapData = [];
+    const current = new Date(startDate);
+    while (current <= endDate) {
+      const dateString = current.toISOString().slice(0, 10);
+      const value = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+      data.push({ date: dateString, value });
+      current.setDate(current.getDate() + 1);
+    }
+    return data;
+  }
+
+  const data = useMemo(() => generateRandomHeatmapData(new Date("2025-01-01"), new Date("2025-12-30"), 0, 30), []);
+
   return (
     <div>
       {/* <div className="flex items-center gap-4">
         <Separator orientation="vertical" className="h-6" />
       </div> */}
+
+      <Card className="m-6 p-2">
+        <CardContent>
+          <Heatmap
+            data={data}
+            startDate={new Date("2025-01-01")}
+            endDate={new Date("2025-12-30")}
+            colorMode="interpolate"
+            daysOfTheWeek="all"
+            cellSize={18}
+            gap={5}
+            displayStyle="squares"
+            dateDisplayFunction={(date) => (
+              <span className="font-semibold">
+                {date.toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                })}
+              </span>
+            )}
+          />
+        </CardContent>
+      </Card>
       <div className="flex-1 p-6 space-y-6 overflow-auto">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* Weekly Workouts Chart */}
