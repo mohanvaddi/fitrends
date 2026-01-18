@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartContainer } from "@/components/ui/chart";
 import { Heatmap, type HeatmapData } from "@/components/ui/heatmap";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { useMemo } from "react";
 import {
   Area,
@@ -84,10 +85,6 @@ export default function Page() {
 
   return (
     <div>
-      {/* <div className="flex items-center gap-4">
-        <Separator orientation="vertical" className="h-6" />
-      </div> */}
-
       <Card className="m-6 p-2">
         <CardContent>
           <Heatmap
@@ -108,6 +105,8 @@ export default function Page() {
                 })}
               </span>
             )}
+            // minColor="var(--chart-1)"
+            // maxColor="var(--chart-4)"
           />
         </CardContent>
       </Card>
@@ -124,13 +123,13 @@ export default function Page() {
                 config={{
                   workouts: { label: "Workouts", color: "var(--color-chart-1)" },
                 }}
-                className="h-[200px] w-full"
+                className="h-50 w-full"
               >
                 <BarChart data={weeklyWorkouts}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
                   <XAxis dataKey="day" tickLine={false} axisLine={false} />
                   <YAxis tickLine={false} axisLine={false} />
-                  <Bar dataKey="workouts" fill="var(--color-chart-1)" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="workouts" fill="var(--chart-4)" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ChartContainer>
             </CardContent>
