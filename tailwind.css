@@ -1,4 +1,5 @@
-@import "./css/themes/lime-theme.css"; // current theme
+@import "./css/themes/lime-theme.css";
+/* @import "./css/themes/old-theme.css"; */
 
 @import "tailwindcss";
 @import "tw-animate-css";

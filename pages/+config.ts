@@ -11,5 +11,5 @@ export default {
   description: "Fitness Companion is your ultimate workout tracker and fitness planner.",
   extends: [vikeReact],
 
-  prerender: true,
+  prerender: { partial: true }, // Enable partial prerendering
 } satisfies Config;

@@ -1,7 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartContainer } from "@/components/ui/chart";
 import { Heatmap, type HeatmapData } from "@/components/ui/heatmap";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { useMemo } from "react";
 import {
   Area,
@@ -85,7 +84,7 @@ export default function Page() {
 
   return (
     <div>
-      <Card className="m-6 p-2">
+      {/* <Card className="m-6 p-2">
         <CardContent>
           <Heatmap
             data={data}
@@ -109,7 +108,7 @@ export default function Page() {
             // maxColor="var(--chart-4)"
           />
         </CardContent>
-      </Card>
+      </Card> */}
       <div className="flex-1 p-6 space-y-6 overflow-auto">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* Weekly Workouts Chart */}
